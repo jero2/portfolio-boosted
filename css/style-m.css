@@ -1,0 +1,271 @@
+@charset "utf-8";
+
+/* reset */
+html {-webkit-text-size-adjust: none; text-size-adjust: none;}
+body {margin: 0;}
+h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p {margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 600;}
+a {color: inherit; text-decoration: inherit;}
+li {list-style: none;}
+img {vertical-align: middle; max-width: 100%;}
+address, em, i, cite {font-style: normal;}
+table {border-collapse: collapse;}
+table caption {overflow: hidden; width: 0; height: 0;}
+i[class^="fa"] {position: relative; display: inline-block; vertical-align: middle; overflow: hidden;}
+i[class^="fa"] span {position: absolute; left: -9999px;}
+.ir-hidden {position: absolute; left: -9999px;}
+.pc {display: none !important;}
+br.only-pc {content: '';}
+br.only-pc::after {content: '\00a0';}
+
+
+/* common */
+body {font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 400; color: #000000; background: #ffffff;}
+
+#wrapper {min-width: 320px; max-width: 1024px; margin: 0 auto; overflow: hidden;}
+#wrapper.open {height: 100vh;}
+#wrapper.open::after {content: ''; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #ffffff;}
+#skip-nav {position: fixed; left: 0; top: -40px; width: 100%; line-height: 40px; text-align: center; background-color: rgba(0, 0, 0, 0.7); color: #ff4a32; font-size: 14px; transition: top 0.3s; z-index: 100000;}
+#skip-nav:focus {top: 0;}
+
+/* #wrapper {min-width: 1024px; overflow: hidden;} */
+
+#header {position: fixed; left: 0; top: 0; width: 100%; height: 80px; font-weight: 500; letter-spacing: 1px; font-size: 14px; background: #ffffff; z-index: 10000;}
+#header div.checkout {position: absolute; left: 0; top: 0; width: 100%; line-height: 28px; font-size: 12px; letter-spacing: 2px; text-align: center; color: #ffffff; background: #000000;}  
+#header div.header-nav {position: absolute; left: 0; bottom: 0; width: 100%; height: 52px;}
+#header div.header-nav > h1 a{position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 180px;}
+#header div.header-nav > h1 a img {width: 100%;}
+#header div.header-nav > ul#top-menu {position: absolute; right: 10px; top: 50%; transform: translate(0,-50%);}
+#header div.header-nav > ul#top-menu > li {float: left; transition: all 0.5s; display: block;}
+#header div.header-nav > ul#top-menu > li + li {margin-left: 10px;}
+#header div.header-nav > ul#top-menu > li a {display: inline-block; font-size: 18px; transition: all 0.5s;}
+#header div.header-nav > ul#top-menu > li a:hover {color: #ff2121;}
+
+#header #gnb a.QUICK {position: absolute; left: 10px; top: 50%; transform: translate(0,-50%); width: 18px; height: 16px; z-index: 10;}
+#header #gnb a.QUICK::before {content: ''; position: absolute; left: 0; top: 0; width: 18px; height: 2px; background: #000000; transition: all 0.3s;}
+#header #gnb a.QUICK > span {position: absolute; left: 0; top: 50%; transform: translate(0, -50%); width: 18px; height: 2px; background: #000000; transition: all 0.3s; text-indent: -9999px;}
+#header #gnb a.QUICK::after {content: ''; position: absolute; left: 0; bottom: 0; width: 18px; height: 2px; background: #000000; transition: all 0.3s;}
+#wrapper.open #header #gnb a.QUICK::before {top: 50%; transform: rotate(45deg) translate(0, -50%);}
+#wrapper.open #header #gnb a.QUICK span {opacity: 0;}
+#wrapper.open #header #gnb a.QUICK::after {bottom: 50%; transform: rotate(-45deg) translate(0, 50%);}
+
+#header #gnb > ul {position: fixed; left: -100%; top: 52px; width: 100%; height: 100vh; margin-top: 28px; background: #ffffff; transition: left 0.3s;}
+#wrapper.open #header #gnb > ul {left: 0;}
+#header #gnb > ul li {padding-left: 20px; padding-top: 10px; font-size: 12px; font-weight: 500; letter-spacing: 1px; line-height: 1.5; transition: all 0.5s;}
+#header #gnb > ul li a{display: block; padding-bottom: 8px; transition: all 0.5s;}
+#header #gnb > ul li a:hover {color: #ff4a32;}
+#header #gnb > ul li a.toggle {position: relative; left: 0; top: 0; display: block;}
+#header #gnb > ul li a.toggle i {position: absolute; right: 20px; top: 0; line-height: 16px; transition: all 0.5s;}
+#header #gnb > ul li a.toggle i.down {transform: rotate(180deg);}
+
+#header #gnb > ul li > ul {display: none;}
+#header #gnb > ul li:hover > ul {display: block;}
+#header #gnb > ul li:hover > ul li {position: relative; left: 0; top: 0; line-height: 1.5; font-size: 14px; display: none; transition: top 0.3s;}
+#header #gnb > ul li:hover > ul li.open {display: block;}
+#header #gnb > ul li:hover > ul li::after{content: ''; position: absolute; left: 0; top: 0; width: 1.5px; height: 100%; background: #000000;}
+
+
+#header.on {position: fixed; left: 0; top: 0; width: 100%; height: 52px; font-weight: 500; letter-spacing: 1px; font-size: 14px; background: #ffffff; z-index: 10000; opacity: 0.9;}
+#header.on div.checkout {position: absolute; left: 0; top: 0; width: 100%; line-height: 28px; font-size: 12px; letter-spacing: 2px; text-align: center; color: #ffffff; background: #000000; display: none;}  
+#header.on div.header-nav {position: absolute; left: 0; bottom: 0; width: 100%; height: 52px; opacity: 1;}
+#header.on div.header-nav > h1 a{position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 180px; }
+#header.on div.header-nav > h1 a img {width: 100%; }
+#header.on div.header-nav > ul#top-menu {position: absolute; right: 10px; top: 50%; transform: translate(0,-50%); opacity: 0.9;}
+#header.on div.header-nav > ul#top-menu > li {float: left; transition: all 0.5s; display: block;}
+#header.on div.header-nav > ul#top-menu > li + li {margin-left: 10px;}
+#header.on div.header-nav > ul#top-menu > li a {display: inline-block; font-size: 18px;}
+
+#header.on #gnb a.QUICK {position: absolute; left: 10px; top: 50%; transform: translate(0,-50%); width: 18px; height: 16px; z-index: 10;}
+#header.on #gnb a.QUICK::before {content: ''; position: absolute; left: 0; top: 0; width: 18px; height: 2px; background: #000000; transition: all 0.3s;}
+#header.on #gnb a.QUICK > span {position: absolute; left: 0; top: 50%; transform: translate(0, -50%); width: 18px; height: 2px; background: #000000; transition: all 0.3s; text-indent: -9999px;}
+#header.on #gnb a.QUICK::after {content: ''; position: absolute; left: 0; bottom: 0; width: 18px; height: 2px; background: #000000; transition: all 0.3s;}
+#wrapper.open #header.on #gnb a.QUICK::before {top: 50%; transform: rotate(35deg) translate(0, -50%);}
+#wrapper.open #header.on #gnb a.QUICK span {opacity: 0;}
+#wrapper.open #header.on #gnb a.QUICK::after {bottom: 50%; transform: rotate(-35deg) translate(0, 50%);}
+
+#header.on #gnb > ul {position: fixed; left: -100%; top: 52px; width: 100%; height: 100vh; background: #ffffff;}
+#wrapper.on .open #header #gnb > ul {left: 0;}
+#header.on #gnb > ul li {padding-left: 20px; padding-top: 10px; font-size: 12px; font-weight: 500; letter-spacing: 1px; line-height: 1.5; transition: all 0.5s; }
+#header.on #gnb > ul li a{display: block; padding-bottom: 8px;}
+#header.on #gnb > ul li a:hover {color: #ff4a32;}
+#header.on #gnb > ul li a.toggle {position: relative; left: 0; top: 0; display: block; }
+#header.on #gnb > ul li a.toggle i {position: absolute; right: 20px; top: 50%; transform: translate(0,-50%); transition: all 0.5s;}
+#header.on #gnb > ul li a.toggle i:hover {transform: rotate(180deg);}
+#header.on #gnb > ul li > ul {display: none;}
+#header.on #gnb > ul li:hover > ul {display: block;}
+#header.on #gnb > ul li:hover > ul li {position: relative; left: 0; top: 0; line-height: 1.5; font-size: 14px;}
+#header.on #gnb > ul li:hover > ul li::after{content: ''; position: absolute; left: 0; top: 0; width: 1.5px; height: 100%; background: #000000;}
+
+
+
+#footer div.pros{position: relative; left: 0; top: 0; width: 100%; height: auto; background: #000000; color: #ffffff;  overflow: hidden;}
+#footer div.pros ul {text-align: center; margin-top: 18px; margin-bottom: 30px;}
+#footer div.pros ul > li {padding: 20px; display: block; }
+#footer div.pros ul > li img {width: 26%;}
+#footer div.pros ul > li em {font-size: 32px; font-weight: 700; line-height: 1.125; display: block; margin-top: 10px; margin-bottom: 24px;}
+#footer div.pros ul > li p {padding: 0 30px; line-height: 1.5;}
+
+#footer div.explain {position: relative; left: 0; top: 0; width: 100%; padding: 30px; background: #f7f7f7;}
+#footer div.explain > img {width: 30%; transition: all 0.5s;}
+#footer div.explain > img:hover {opacity: 0.7;}
+#footer div.explain > div.footer-link {width: 90%;}
+#footer div.explain > div.footer-link em {font-size: 20px; font-weight: 600; line-height: 2.5;}
+#footer div.explain > div.footer-link ul {font-size: 14px; line-height: 1.5;}
+#footer div.explain > div.footer-link ul a { transition: all 0.5s;}
+#footer div.explain > div.footer-link ul a:hover {color: #ff4a32;}
+
+#footer div.explain > div.about {width: 90%;}
+#footer div.explain > div.about em {font-size: 20px; font-weight: 600; line-height: 2.5;}
+#footer div.explain > div.about p {margin-top: 10px; font-size: 14px; line-height: 1.5; }
+#footer div.explain > div.about address {margin-top: 15px;}
+#footer div.explain > div.about address > span {display: block; font-size: 14px; line-height: 1.5;}
+
+
+#footer div.extra {position: relative; left: 0; top: 0; width: 100%; height: 120px; background: #ffffff;}
+#footer div.extra p.copyright {position: absolute; left: 20px; top: 20px; width: 60%; font-size: 13px; }
+#footer div.extra p.copyright a {color: #ff4a32;}
+#footer div.extra ul.payment {position: absolute; right: 20px; top: 20px; width: 24%; overflow: hidden; }
+#footer div.extra ul.payment li {float: left; display: block; margin-left: 3px;}
+#footer div.extra ul.payment li i { font-size: 28px; color:#000000;}
+
+
+
+
+
+
+
+/*main*/
+
+#main > #main-visual {position: relative; left: 0;  top: 0; width: 100%; height: 600px; overflow: hidden; margin-top: 52px; }
+#main > #main-visual img {position: absolute; left: 0; top: 0; width: 100%;}
+#main > #main-visual h2 {position: absolute; left: 50%; top: 40%; transform: translate(-50%,0); width: 100%; text-align: center; font-size: 27px; font-weight: 700;}
+#main > #main-visual p {position: absolute; left: 50%; top: 52%; transform: translate(-50%,0); width: 90%; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 1px;}
+#main > #main-visual ul {position: absolute; left: 50%; top: 62%; transform: translate(-50%,0); width: 100%; text-align: center;}
+#main > #main-visual ul li {margin: 10px;}
+
+#main > section#companys {left: 0; top: 0; width: 100%; text-align: center; background:#000000;}
+#main > section#companys ul {overflow: hidden; margin: 18px 0; }
+#main > section#companys ul li {display: inline-block;  margin: 10px 50px;}
+
+#main > section#looking {position: relative; left: 0; top: 0; text-align: center; padding: 20px; padding-bottom: 20px; }
+#main > section#looking h2 {font-size: 32px; font-weight: 700; line-height: 1.125; margin-top: 50px;}
+#main > section#looking p {position: relative; font-size: 15px; font-weight: 400; margin: 16px 0; }
+#main > section#looking > p::after {content: ''; position: absolute; left: 50%; top: 130%; transform: translate(-50%,0); width: 70px; height: 2px; background: #cfcfcf;}
+#main > section#looking em {font-size: 15px; font-weight: 500;}
+#main > section#looking ul.shop2 {overflow: hidden; width: 100%; margin-top: 74px; text-align: center;}
+#main > section#looking ul.shop2 li {display: inline-block;}
+#main > section#looking ul.shop2 li a {position: relative; left: 0; top: 0; width: 100%; overflow: hidden; display: block;}
+#main > section#looking ul.shop2 li + li {margin-top:  20px;}
+#main > section#looking ul.shop2 li a > img {display: inline-block; width: 100%; transition: all 0.3s; opacity: 0.8;}
+#main > section#looking ul.shop2 li > a:hover img {transform: scale(1.1);}
+#main > section#looking ul.shop2 li > a span {position: absolute; left: 50%; top: 42%; transform: translate(-50%,-50%); width: 6%; }
+#main > section#looking ul.shop2 li > a em{position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 100%; color: #ffffff; line-height: 1.2; font-weight: 700; font-size: 20px; letter-spacing: 0px; opacity: 1;}
+#main > section#looking ul.shop2 li > a p {position: absolute; left: 50%; top: 54%; transform: translate(-50%,-50%); color: #ffffff; line-height: 1.25; font-size: 20px; width: 100%; opacity: 1;}
+
+#main > section#skateboards {position: relative; left: 0; top: 0; width: 100%; height: 600px; background: url(../img/main/boosted_shop_main.png) top center no-repeat; background-size: 100%; overflow: hidden; }
+#main > section#skateboards span {position: absolute; left: 50%; bottom:50%; transform: translate(-50%, 0); font-weight: 700; line-height: 1.25; letter-spacing: 1px; text-align: center;}
+#main > section#skateboards h2 {position: absolute; left: 50%; bottom:42%; transform: translate(-50%, 0); width:100%; font-size: 27px; font-weight: 700; line-height: 1.125; text-align: center; padding: 0 10px;}
+#main > section#skateboards p {position: absolute; left: 50%; bottom:28%; transform: translate(-50%, 0); width: 90%; font-weight: 700; line-height: 1.25; letter-spacing: 1px; text-align: center;}
+#main > section#skateboards a.btn {position: absolute; left: 50%; bottom:18%; transform: translate(-50%, 0);} 
+
+#main > section#boosted {position: relative; left: 0; top: 0; padding: 20px;}
+#main > section#boosted ul {display: inline-block; line-height: 100%; overflow: hidden;}
+#main > section#boosted ul li {width: 100%; display: block;}
+#main > section#boosted ul li + li {margin-top: 20px;}
+#main > section#boosted ul li > img {width: 100%;}
+#main > section#boosted ul li.text {}
+#main > section#boosted ul li.text > h2 {font-size: 32px; line-height: 1.2; text-align: left; padding-bottom: 20px;}
+#main > section#boosted ul li.text > p {line-height: 1.5; text-align: left; padding-bottom: 20px;}
+#main > section#boosted ul li.text > a.btn{display: inline-block; text-align: left;}
+
+#main > section#shop3 {width: 100%;}
+#main > section#shop3 ul {overflow: hidden;}
+#main > section#shop3 ul li {position: relative; width: 100%; height: 480px; display: block; overflow: hidden; background: #000000;}
+#main > section#shop3 ul > li a > img {position: absolute; left: 0; top: 0; display: block; width: 100%; opacity: 0.7; transition: all 0.3s;}
+#main > section#shop3 ul > li a:hover > img {transform: scale(1.1);}
+#main > section#shop3 ul > li > a > em {position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 100%; font-size: 20px; line-height: 1.2; font-weight: 700; letter-spacing: 0px; color: #ffffff; text-align: center;}
+#main > section#shop3 ul > li > a > p {position: absolute; left: 50%; top: 58%; transform: translate(-50%,-50%); font-size: 20px; line-height: 1.25; letter-spacing: 0px; color: #ffffff;} 
+
+#main > section#youtube {width: 100%; height: auto; overflow: hidden;}
+#main > section#youtube ul {text-align: center; padding: 50px 40px;}
+#main > section#youtube ul li {position: relative; left: 0; top: 0; display: block; width: 100%; height: 0; padding-bottom: 56.25%; background: #000000;}
+#main > section#youtube ul > li + li {margin-top: 20px;}
+#main > section#youtube ul > li iframe {position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+
+#main > section#accessories {position: relative; width: 100%;}
+#main > section#accessories h2 {text-align: center; font-size: 32px; font-weight: 700; line-height: 1.125; margin-top: 30px;}
+#main > section#accessories h2::after {content: ''; position: absolute; left: 50%; top: 66px; transform: translate(-50%,0); width: 70px; height: 2px; background: #cfcfcf;}
+#main > section#accessories .box {overflow: hidden; padding: 20px 0px;}
+#main > section#accessories .box .slide {position: relative; width: 5000px; overflow: hidden; margin: 30px 0px;}
+#main > section#accessories .box .slide li {float: left; margin-right: 4px;  text-align: center; width: calc(2010 / 2010 * 200px);}
+#main > section#accessories .box .slide li:last-child {margin-right: 0px;}
+#main > section#accessories .box .slide li a {display: block;}
+#main > section#accessories .box .slide li a img {display:inline-block; width: 100%;}
+#main > section#accessories .box .slide li a p {color: #ff4a32; line-height: 1.2;}
+#main > section#accessories .box .slide li a span.soldout {color:rgba(0, 0, 0, 0.3);}
+
+#main > section#accessories .control a.prev,
+#main > section#accessories .control a.next {position: absolute; top: 0; width: 30px; height: 100%;}
+#main > section#accessories .control a.prev {left: 0;}
+#main > section#accessories .control a.next {right: 0;}
+#main > section#accessories .control a > i {font-size: 20px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: rgba(0, 0, 0, 0.75);}
+
+
+
+/*sub-skateboards*/
+#main > section#skateboards-shop {position: relative; left: 50%; top: 0; transform: translate(-50%,0); width: 95%; max-width: 1200px; height: auto; margin-top: 70px; padding-top: 40px; padding-bottom: 40px; overflow: hidden;}
+#main > section#skateboards-shop h2 {font-size: 32px; font-weight: 700; line-height: 1.125; padding-top: 20px;}
+#main > section#skateboards-shop h2::before {content: ''; position: absolute; left: 0; top: 120px; width: 70px; height: 2px; background: #cfcfcf;}
+#main > section#skateboards-shop > p {line-height: 1.5; padding-top: 64px;}
+
+#main > section#skateboards-shop div.items {margin-top: 20px;}
+#main > section#skateboards-shop div.items ul.row {text-align: center;}
+#main > section#skateboards-shop div.items ul.row > li.cell {min-width: 330px; width: 45%; display: inline-block; margin-bottom: 10px; padding-bottom: 20px;}
+#main > section#skateboards-shop div.items ul.row > li.cell img {width: 100%;}
+#main > section#skateboards-shop div.items ul.row > li.cell p {display: block; padding-top: 3px; line-height: 1.2; color: #ff2121;}
+#main > section#skateboards-shop div.items ul.row > li.cell span {display: block; padding-top: 3px; line-height: 1.2; display: inline-block;}
+
+
+
+/* module */
+a.btn {display: inline-block; box-sizing: border-box; width: auto; line-height: 1.5; padding: calc(0.375em - 1px) 2em; font-size: 14px; text-align: center; border-radius: 35px; background-color: #ff4a32; border: 1px solid transparent; color: #ffffff; transition: background-color 0.2s ease-in-out;}
+a.btn.main { width: 190px;}
+a.btn:hover {background-color: #606060;}
+a.btn:hover.click {border: 1px solid rgba(255, 74, 50, 0.7);}
+span.soldout {color: rgba(0, 0, 0, 0.3);}
+span> em {font-style: italic; font-size: smaller;}
+span.cancel {text-decoration: line-through; color: rgba(255, 74, 50, 0.7);}
+
+/* 
+@media only screen and (max-width: 798px) {
+  div.items ul.row > li.cell {
+    width: calc(50% - 20px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  div.items ul.row > li.cell {
+    width: calc(100% - 20px);
+}
+ */
+
+
+
+
+/* animation keyframes */
+
+/*
+@keyframes show-up {
+  0% {transform: translate(0, 50px); opacity: 0;}
+  100% {transform: translate(0, 0); opacity: 1;}
+}
+@keyframes show-up2 {
+  0% {transform: translate(-50%, 50px); opacity: 0;}
+  100% {transform: translate(-50%, 0); opacity: 1;}
+}
+@keyframes btn-effect-right {
+  0% {transform: translate(0, 0);}
+  100% {transform: translate(5px, 0);}
+}
+*/
+
